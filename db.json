@@ -1,0 +1,20 @@
+{
+  "customers": [
+    {
+      "name": "Gerson Benito",
+      "business": "Gerson",
+      "email": "gersonbenito4@gmail.com",
+      "phone": "79945946",
+      "notes": "test notes customers",
+      "id": 1
+    },
+    {
+      "name": "Gerson Benito",
+      "business": "Gerson",
+      "email": "gersonbenito4@gmail.com",
+      "phone": "79945946",
+      "notes": "test notes customers",
+      "id": 2
+    }
+  ]
+}

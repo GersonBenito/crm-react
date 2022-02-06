@@ -2,8 +2,11 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Alert from './Alert';
+import { useFetch } from '../hooks/useFetch';
 
 const ToRegister = () => {
+
+    const [ useDataApi ] = useFetch();
 
     // initial values of form
     const initialValues = {
@@ -22,15 +25,25 @@ const ToRegister = () => {
                 .required('Name is required'),
         business: Yup.string()
                 .min(3, 'The company name is too short')
-                .max(20, 'The company name is too long')
+                .max(50, 'The company name is too long')
                 .required('Business is required'),  
-        // email: '',
-        // phone: '',
+        email: Yup.string()
+                .email('Invalid email')
+                .required('Email is required'),
+        phone: Yup.number()
+                .positive('Invalid number')
+                .integer('Invalid number')
+                .typeError('Invalid number'),
         // notes: '',
     });
 
-    const handleSubmit = (values) =>{
-        console.log(values);
+    const handleSubmit = async (values) =>{
+        try {
+            const data = await useDataApi('/customers', 'POST', values);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -79,6 +92,7 @@ const ToRegister = () => {
                                 placeholder="Email of Client"
                                 name="email"
                             />
+                            { errors.email && touched.email && <Alert message={errors.email} /> }
                         </div>
                         <div className='mb-4'>
                             <label htmlFor="phone" className="text-gray-800">Phone:</label>
@@ -89,6 +103,7 @@ const ToRegister = () => {
                                 placeholder="Phone of Client"
                                 name="phone"
                             />
+                            { errors.phone && touched.phone && <Alert message={errors.phone} /> }
                         </div>
                         <div className='mb-4'>
                             <label htmlFor="notes" className="text-gray-800">Notes:</label>
