@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Alert from './Alert';
 import { useFetch } from '../hooks/useFetch';
@@ -7,6 +8,7 @@ import { useFetch } from '../hooks/useFetch';
 const ToRegister = () => {
 
     const [ useDataApi ] = useFetch();
+    const navigate = useNavigate();
 
     // initial values of form
     const initialValues = {
@@ -37,9 +39,11 @@ const ToRegister = () => {
         // notes: '',
     });
 
-    const handleSubmit = async (values) =>{
+    const handleSubmit = async (values, resetForm) =>{
         try {
             const data = await useDataApi('/customers', 'POST', values);
+            resetForm();
+            navigate('/customers');
             console.log(data);
         } catch (error) {
             console.log(error);
@@ -56,7 +60,7 @@ const ToRegister = () => {
 
             <Formik
                 initialValues={ initialValues }
-                onSubmit={ handleSubmit }
+                onSubmit={ (values, { resetForm }) => handleSubmit(values, resetForm) }
                 validationSchema={ newSchemaClient }
             >
                 {({ errors, touched }) => (

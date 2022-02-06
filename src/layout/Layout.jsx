@@ -17,17 +17,17 @@ const Layout = () => {
                 <nav className="mt-10">
                     <Link 
                         className={`
-                            ${pathname === '/client' ? 'text-blue-300': 'text-white'} 'text-2xl block mt-2 hover:text-blue-300'
+                            ${pathname === '/customers' ? 'text-blue-300': 'text-white'} 'text-2xl block mt-2 hover:text-blue-300'
                         `}
-                        to="/client"
+                        to="/customers"
                     >
-                        Client 
+                        Customers 
                     </Link>
                     <Link 
                         className={`
-                            ${pathname === '/client/new' ? 'text-blue-300': 'text-white'} 'text-2xl block mt-2 hover:text-blue-300'
+                            ${pathname === '/customers/new' ? 'text-blue-300': 'text-white'} 'text-2xl block mt-2 hover:text-blue-300'
                         `}
-                        to="/client/new"
+                        to="/customers/new"
                     >
                         New Client
                     </Link>

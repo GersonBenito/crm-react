@@ -15,6 +15,22 @@
       "phone": "79945946",
       "notes": "test notes customers",
       "id": 2
+    },
+    {
+      "name": "Karen",
+      "business": "Karen de los gatos",
+      "email": "karen@gmail.com",
+      "phone": "57867834",
+      "notes": "Karen is making new cotizacion",
+      "id": 3
+    },
+    {
+      "name": "Andrea Palmera",
+      "business": "Andrea construcciones",
+      "email": "andre@gmail.com",
+      "phone": "56894055",
+      "notes": "",
+      "id": 4
     }
   ]
 }
